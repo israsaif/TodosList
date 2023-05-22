@@ -40,19 +40,29 @@ public class TodoController {
 //        String statement = todoServices.getTodo(TodoId);
 //        return ResponseEntity.ok(statement);
 //    }
-    @RequestMapping(value = "/updateTodo", method = RequestMethod.GET)
-    public String updateTodo(@RequestParam UserRequest userRequest) {
-        todoServices.updateTodo(userRequest);
+    @RequestMapping(value = "updateTodo", method = RequestMethod.POST)
+    public String updateTodo(@RequestBody Todo todo) {
+        try {
+            todoServices.updateTodo(todo);
+            return "200 ok Successfully";
+        } catch (Exception e) {
+            return "List Update Failed";
+        }  }
 
-        return " 200 OK ";
+@RequestMapping (value = "deleteTodo", method = RequestMethod.POST)
+    public String deleteTodo(Integer id) {
+        try {
+            todoServices.deleteTodo(id);
+            return "TodoList deleted Successfully";
+
+        } catch (Exception e) {
+            return "TodoList delete failed";
+        }
     }
-//    @RequestMapping(value = "/deleteTodoById", method = RequestMethod.POST)
-//    public String deleteTodoById(Integer id) {
-//        try {
-//            todoServices.deleteTodoById(id);
-//        } catch (Exception e) {
-//            return "204 No Content ";
-//        }
-//      return "Deleted Successfully :)";
-//    }
+
+
+
+
+
+
         }

@@ -20,10 +20,8 @@ public class ReportServices {
 
     @Autowired
     TodoRepositories todoRepositories;
-//    @Autowired
-//    UserRegistrationRepositories userRegistrationRepositories;
 
-    public static final String pathToReports = "C:C:\\Users\\User006\\Downloads\\NewReport";
+    public static final String pathToReports = "C:\\Users\\User006\\Downloads\\NewReport";
 
     public String todoReport() throws FileNotFoundException, JRException {
         List<Todo> todoList = todoRepositories.getAllTodo();

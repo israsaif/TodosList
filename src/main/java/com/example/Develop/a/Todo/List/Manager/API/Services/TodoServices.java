@@ -55,20 +55,19 @@ public class TodoServices {
     }
 
 
-    public void updateTodo(UserRequest userRequest) {
-        Todo TodoR = new Todo();
-        TodoR.setId(userRequest.getId());
-        TodoR.setTitle(userRequest.getTitle());
-        TodoR.setDescription(userRequest.getDescription());
-        Integer id = userRegistration.getIdByUserName(userRequest.getUserName());
-        UserRegistration userRegistrationId = userRegistration.findById(id).get();
-        TodoR.setUserRegistration(userRegistrationId);
-        TodoR.setCompleted(userRequest.getCompleted());
-        todoRepositories.save(TodoR);
+    public void updateTodo(Todo todo) {
+        Todo updateTodo = new Todo();
+        updateTodo.setId(todo.getId());
+        updateTodo.setTitle(todo.getTitle());
+        updateTodo.setDescription(todo.getDescription());
+        updateTodo.setCompleted(todo.getCompleted());
+        todoRepositories.save(updateTodo);
+
 
     }
-//    public void deleteTodoById(Integer id) {
-//        Todo todo = todoRepositories.deleteById(id).get();
-//        todoRepositories.save(todo);
-//    }
+
+public  void deleteTodo(Integer id) {
+    todoRepositories.deleteById(id);
+}
+
 }
