@@ -27,9 +27,6 @@ public class ReportServices {
 
     public String todoReport() throws FileNotFoundException, JRException {
         List<Todo> todoList = todoRepositories.getAllTodo();
-
-
-
         File file = ResourceUtils.getFile("classpath:Todo.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(todoList);
